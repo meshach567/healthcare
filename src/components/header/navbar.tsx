@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { AiOutlineOrderedList } from "react-icons/ai";
+import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
 
 
@@ -18,7 +18,7 @@ const Navbar = () => {
 
                 <header className='top-[18px] left-[18px] w-full max-w-[1600px] h-full max-h-[72px] flex flex-row justify-between space-x-4 rounded-[70px]'>
                     <div className=''>
-                        <Image className='md:w-48' src="/textimage.svg" alt='text image' width={200} height={50} />
+                        <Image className='md:w-48' src="/textimage.svg" alt='text image' width={200} height={50} priority />
                     </div>
 
                     <ul className='flex space-x-8'>
@@ -65,12 +65,12 @@ const Navbar = () => {
                 <header className='flex flex-col  space-y-4  xs:block ss:block  md:hidden'>
                     <div className='flex flex-row justify-between'>
                         <div>
-                            <Image src="/textimage.svg" alt='text logo' width={100} height={100} />
+                            <Image src="/textimage.svg" alt='text logo' width={100} height={100} priority />
                         </div>
 
                         <div  aria-controls="mobile-menu"
               aria-expanded="false" onClick={() => setIsOpen(!isOpen)}>
-                            {isOpen ? (<AiOutlineClose />) : (<AiOutlineOrderedList />)}
+                            {isOpen ? (<AiOutlineClose />) : (<AiOutlineMenu />)}
                         </div>
                     </div>
 
