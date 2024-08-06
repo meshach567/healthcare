@@ -28,7 +28,8 @@ module.exports = {
       'purple': '#705AAA',
       "lilac": "#F4F0FE",
       "pink": "#FFE6F1",
-      "skyblue": "#E0F3FA"
+      "skyblue": "#E0F3FA",
+      "ekene": "#D8FCF7"
     },
     screens: {
       xs: '360px',

@@ -137,7 +137,7 @@ const ProfileCard = () => {
                     <div className='grid grid-cols-3 gap-[.8rem]'>
                         <div className='bg-skyblue p-[.8rem] leading-8'>
                             <div className='bg-white rounded-full w-[4rem]'>
-                                <Image className='object-center object-cover block' src="/respiratory.svg" alt='respository' width={150} height={150} />
+                                <Image className='object-center object-cover block' src="/respiratory.svg" alt='respository' width={150} height={150} priority />
                             </div>
                             <p>Respiratory Rate</p>
                             <h3>20 bpm</h3>

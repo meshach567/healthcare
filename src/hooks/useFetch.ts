@@ -2,8 +2,8 @@
 import { useState, useEffect } from 'react';
 import { DataItem, UseFetchArrayResult } from '../utils/intefaces';
 
-let username = 'coalition';
-let password = 'skills-test';
+let username = `${process.env.userName}`;
+let password = `${process.env.passWord}`;
 let auth = btoa(`${username}:${password}`);
 
 const DEFAULT_OPTIONS = {

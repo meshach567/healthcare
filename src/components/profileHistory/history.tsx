@@ -1,6 +1,5 @@
 import React from 'react'
 import useThirdIndexValues from '../../hooks/useThirdIndexValues';
-import ChildComponent from './historyChild';
 import HistoryChild from './historyChild';
 
 interface Data {
@@ -56,7 +55,6 @@ const History = () => {
   ];
 
   const [name_person, contact_info, gender, date_of_birth, emergency_contact, insurance_provider, profile_picture] = useThirdIndexValues(data, fields);
-  // const thirdIndexValues = useThirdIndexValues(data, fields);
 
   return (
     <section className="testimonial bg-white shadow-md">
