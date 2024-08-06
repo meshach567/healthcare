@@ -93,7 +93,7 @@ const ProfileCard = () => {
             <div className='leading-6 p-[1rem]'>
                 <h2>Diagnosis History</h2>
                 <div className='cardsbox flex flex-col w-full mb-[1.5rem]'>
-                    <div className='flex flex-col space-y-12 mb-[1rem] '>
+                    <div className='flex flex-col space-y-12 mb-[1rem] bg-purple rounded-[1rem]'>
                         <div className=' basis-1/4'>
                             <LineChart
                                 width={500}
