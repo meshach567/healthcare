@@ -13,48 +13,48 @@ const Navbar = () => {
     return (
         <>
 
-            <nav className=" p-[1.5rem] xs:hidden  sm:hidden md:block">
+            <nav className="xs:hidden  sm:hidden md:block">
                 { /* Desktop  */}
 
-                <header className='top-[18px] left-[18px] w-full max-w-[1600px] h-full max-h-[72px] flex flex-row justify-between space-x-4 rounded-[70px]'>
-                    <div className=''>
-                        <Image className='md:w-48' src="/textimage.svg" alt='text image' width={200} height={50} priority />
+                <header className=' w-full h-auto flex flex-row  items-center justify-between p-[1.5rem]'>
+                    <div className='block'>
+                        <Image className='object-fit object-cover block' src="/textimage.svg" alt='text image' width={120} height={120} />
                     </div>
 
-                    <ul className='flex space-x-8'>
+                    <ul className='flex space-x-4'>
                         <Link className='flex items-center space-x-2' href="overview">
-                            <Image src='/home.svg' alt='patients group' width={20} height={20} />
-                            <span>Overview</span>
+                            <Image className='object-cover object-center block' src='/home.svg' alt='patients group' width={12} height={12} />
+                            <span className='text-[13.5px]'>Overview</span>
                         </Link >
                         <Link className='flex items-center space-x-2' href="#patients">
-                            <Image src='/group.svg' alt='patients group' width={20} height={20} />
-                            <span>Patients</span>
+                            <Image className='object-cover object-center block'  src='/group.svg' alt='patients group' width={12} height={12} />
+                            <span className='text-[13.5px]'>Patients</span>
                         </Link>
                         <Link className='flex items-center space-x-2' href="#schedule">
-                            <Image src='/calendar.svg' alt='patients group' width={20} height={20} />
-                            <span>Schedule</span>
+                            <Image className='object-cover object-center block' src='/calendar.svg' alt='patients group' width={12} height={12} />
+                            <span className='text-[13.5px]'>Schedule</span>
                         </Link>
                         <Link className='flex items-center space-x-2' href="#message">
-                            <Image src='/chat.svg' alt='patients group' width={20} height={20} />
-                            <span>Message</span>
+                            <Image className='object-cover object-center block' src='/chat.svg' alt='patients group' width={12} height={12} />
+                            <span className='text-[13.5px]'>Message</span>
                         </Link>
                         <Link className='flex items-center space-x-2' href="#trasactions">
-                            <Image src='/creditcard.svg' alt='patients group' width={20} height={20} />
-                            <span>Tracsaction</span>
+                            <Image className='object-cover object-center block' src='/creditcard.svg' alt='patients group' width={12} height={12} />
+                            <span className='text-[13.5px]'>Transaction</span>
                         </Link>
                     </ul>
 
-                    <div className='flex item-center space-x-4'>
+                    <div className='flex item-center space-x-2'>
                         <div>
-                            <Image src='/senior-woman-doctor-sm.png' alt='senior woman doctor' width={45} height={45} />
+                            <Image className='object-cover object-center block' src='/senior-woman-doctor-sm.png' alt='senior woman doctor' width={35} height={35} />
                         </div>
                         <div className='flex flex-col text-[14px]'>
-                            <span>Dr. Jose Simmons</span>
-                            <span>General Practitioner</span>
+                            <span className='text-[11px]'>Dr. Jose Simmons</span>
+                            <span className='text-[11px]'>General Practitioner</span>
                         </div>
                         <div className='flex item-center space-x-2'>
-                            <Image src="/settings.svg" alt='settings' width={20} height={20} />
-                            <Image src="./more.svg" alt="more " width={4} height={4} />
+                            <Image src="/settings.svg" alt='settings' width={15} height={15} />
+                            <Image src="./more.svg" alt="more " width={3} height={3} />
                         </div>
                     </div>
                 </header>

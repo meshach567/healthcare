@@ -145,3 +145,11 @@ select {
   }
 }
 
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header';
+  gap: 10px;
+}
+
+.item1 { grid-area: header; }

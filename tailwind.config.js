@@ -25,7 +25,10 @@ module.exports = {
       'lighergreen': '#D8FCF7',
       'faintgrey': '#F6F7F8',
       'lightergrey': '#CBC8D4',
-      'purple': '#705AAA'
+      'purple': '#705AAA',
+      "lilac": "#F4F0FE",
+      "pink": "#FFE6F1",
+      "skyblue": "#E0F3FA"
     },
     screens: {
       xs: '360px',
