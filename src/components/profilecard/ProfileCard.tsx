@@ -119,13 +119,13 @@ const ProfileCard = () => {
                         </div>
                         <div className=' basis-1/2 p-[.5rem] my-[1.2rem]'>
                             <div className='flex items-center space-x-1'>
-                                <div className='bg-purple rounded-full w-[.7rem] h-[.7rem]'></div>
+                                <div className='bg-ben rounded-full w-[.7rem] h-[.7rem]'></div>
                                 <div>Systolic</div>
                             </div>
                             <code><strong>160</strong></code>
                             <p>Higher than Average</p>
                             <div className='flex items-center space-x-1'>
-                                <div className='bg-purple rounded-full w-[.7rem] h-[.7rem]'></div>
+                                <div className='bg-paleblue rounded-full w-[.7rem] h-[.7rem]'></div>
                                 <div>Diatolic</div>
                             </div>
                             <code><strong>70</strong></code>

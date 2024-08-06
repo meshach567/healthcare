@@ -16,7 +16,7 @@ module.exports = {
       'darkgrey': '#707070',
       'nearblue': '#007BC7',
       'closeblue': '#006AAC',
-      'paleblue': '#055A92',
+      'paleblue': '#8C6FE6',
       'navyblue': '#084C77',
       'darkblue': '#0C3D5D',
       'torquise': '#072635',
@@ -29,7 +29,8 @@ module.exports = {
       "lilac": "#F4F0FE",
       "pink": "#FFE6F1",
       "skyblue": "#E0F3FA",
-      "ekene": "#D8FCF7"
+      "ekene": "#D8FCF7",
+      "ben": "#E66FD2"
     },
     screens: {
       xs: '360px',
