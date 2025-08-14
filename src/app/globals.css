@@ -39,6 +39,14 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  background-color: #F6F7F8;
+}
+
+/* Mobile: prevent horizontal scroll */
+@media screen and (max-width: 48em) {
+  body {
+    overflow-x: hidden;
+  }
 }
 
 /* A elements that don't have a class get default styles */
@@ -118,29 +126,31 @@ select {
 
 @media screen and (min-width: 33em) {
   .testimonial-grid {
-      grid-template-areas:
-      "two two"
-      "three three"
-      "one four"
-      "one five";
+    grid-template-areas:
+      'one'
+      'two'
+      'three'
+      'four'
+      'five';
   }
 }
 
 @media screen and (min-width: 48em) {
   .testimonial-grid {
+    grid-template-columns: 280px 1fr;
     grid-template-areas:
-     'one four'
-     'one five'
-     'two two'
-     'three three';
+      'one two'
+      'one three'
+      'one four'
+      'one five';
   }
 }
 
 @media screen and (min-width: 90em) {
   .testimonial-grid {
+      grid-template-columns: 320px 1fr 360px;
       grid-template-areas:
-      "one one two two two two four four"
-      "one one two two two two  four four"
-      "one one three three three three five five";
+      "one two four"
+      "one three five";
   }
 }
