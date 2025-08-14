@@ -9,8 +9,9 @@ interface ChildProps {
 
 const PatientChild: React.FC<ChildProps> = ({ item }) => {
     const { profile_picture, name, gender, age } = item.value;
+    const isActive = name === 'Jessica Taylor';
     return (
-        <div className='flex justify-between items-center p-[1rem] hover:bg-ekene'>
+        <div className={`flex justify-between items-center p-[1rem] ${isActive ? 'bg-ekene rounded-[.5rem]' : 'hover:bg-ekene'}`}>
             <div className='flex flex-row gap-[1rem]'>
                 <div className='max-w-full block'>
                     <Image src={profile_picture} style={{ objectFit: "cover", objectPosition: "center"}} alt='profile picture' width={40} height={40} priority />

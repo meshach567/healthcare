@@ -6,9 +6,6 @@ import { AiOutlineSearch } from 'react-icons/ai';
 const Patient = () => {
   const { data } = useFetch('https://fedskillstest.coalitiontechnologies.workers.dev/');
 
-
-  console.log(data)
-
   return <aside className="testimonial bg-white shadow-md ">
     <div className='flex justify-between items-center'>
       <h3 className='text-[1.04rem] font-bold'>Patients</h3>
