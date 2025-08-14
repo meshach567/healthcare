@@ -1,90 +1,39 @@
 import Image from 'next/image';
 import React, { FunctionComponent } from 'react';
 import {
-    LineChart,
-    Line,
-    XAxis,
-    YAxis,
-    CartesianGrid,
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
     Tooltip,
-    Legend,
-    LabelList,
-} from "recharts";
+    Legend as ChartLegend,
+    Filler
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, ChartLegend, Filler);
 
 interface DataPoint {
     name: string;
-    uv: number;
-    pv: number;
-    amt: number;
+    systolic: number;
+    diastolic: number;
 }
 
 const data: DataPoint[] = [
-    {
-        name: "Oct, 2023",
-        uv: 4000,
-        pv: 2400,
-        amt: 2400,
-    },
-    {
-        name: "Nov, 2023",
-        uv: 3000,
-        pv: 1398,
-        amt: 2210,
-    },
-    {
-        name: "Dec, 2023",
-        uv: 2000,
-        pv: 9800,
-        amt: 2290,
-    },
-    {
-        name: "Jan, 2024",
-        uv: 2780,
-        pv: 3908,
-        amt: 2000,
-    },
-    {
-        name: "Febuary 2024",
-        uv: 1890,
-        pv: 4800,
-        amt: 2181,
-    },
-    {
-        name: "March 2024",
-        uv: 2390,
-        pv: 3800,
-        amt: 2500,
-    }
+    { name: "Oct, 2023", systolic: 120, diastolic: 80 },
+    { name: "Nov, 2023", systolic: 95, diastolic: 60 },
+    { name: "Dec, 2023", systolic: 135, diastolic: 75 },
+    { name: "Jan, 2024", systolic: 115, diastolic: 65 },
+    { name: "Feb, 2024", systolic: 145, diastolic: 70 },
+    { name: "Mar, 2024", systolic: 160, diastolic: 78 },
 ];
 
-const CustomizedLabel: FunctionComponent<any> = (props: any) => {
-    const { x, y, stroke, value } = props;
+const labels: string[] = data.map(d => d.name);
+const systolicValues: number[] = data.map(d => d.systolic);
+const diastolicValues: number[] = data.map(d => d.diastolic);
 
-    return (
-        <text x={x} y={y} dy={-4} fill={stroke} fontSize={4} textAnchor="middle">
-            {value}
-        </text>
-    );
-};
-
-const CustomizedAxisTick: FunctionComponent<any> = (props: any) => {
-    const { x, y, payload } = props;
-
-    return (
-        <g transform={`translate(${x},${y})`}>
-            <text
-                x={0}
-                y={0}
-                dy={16}
-                textAnchor="end"
-                fill="#666"
-                transform="rotate(-35)"
-            >
-                {payload.value}
-            </text>
-        </g>
-    );
-};
+// Chart.js configuration closely matching the mockup style
 
 
 const ProfileCard = () => {
@@ -93,45 +42,77 @@ const ProfileCard = () => {
             <div className='leading-6 p-[1rem]'>
                 <h2>Diagnosis History</h2>
                 <div className='cardsbox flex flex-col w-full mb-[1.5rem]'>
-                    <div className='flex flex-col space-y-12 mb-[1rem] bg-purple rounded-[1rem]'>
-                        <div className=' basis-1/4'>
-                            <LineChart
-                                width={500}
-                                height={300}
-                                data={data}
-                                margin={{
-                                    top: 30,
-                                    right: 20,
-                                    left: 10,
-                                    bottom: 30,
-                                }}
-                            >
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="name" height={60} tick={<CustomizedAxisTick />} />
-                                <YAxis />
-                                <Tooltip />
-                                <Legend />
-                                <Line type="monotone" dataKey="pv" stroke="#8884d8">
-                                    <LabelList content={<CustomizedLabel />} />
-                                </Line>
-                                <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-                            </LineChart>
+                    <div className='flex flex-col space-y-6 mb-[1rem] bg-purple rounded-[1rem] p-[1rem]'>
+                        <div className='flex justify-between items-center'>
+                            <div className='text-[.85rem] text-darkgrey'>Blood Pressure</div>
+                            <div className='text-[.8rem] text-darkgrey'>Last 6 months</div>
                         </div>
-                        <div className=' basis-1/2 p-[.5rem] my-[1.2rem]'>
-                            <div className='flex items-center space-x-1'>
-                                <div className='bg-ben rounded-full w-[.7rem] h-[.7rem]'></div>
-                                <div>Systolic</div>
+                        <div className=' basis-1/4'>
+                            <Line
+                                data={{
+                                    labels,
+                                    datasets: [
+                                        {
+                                            label: 'Systolic',
+                                            data: systolicValues,
+                                            borderColor: '#E66FD2',
+                                            backgroundColor: 'rgba(230,111,210,0.15)',
+                                            pointRadius: 3,
+                                            fill: true,
+                                            tension: 0.35,
+                                        },
+                                        {
+                                            label: 'Diastolic',
+                                            data: diastolicValues,
+                                            borderColor: '#8C6FE6',
+                                            backgroundColor: 'rgba(140,111,230,0.15)',
+                                            pointRadius: 3,
+                                            fill: true,
+                                            tension: 0.35,
+                                        },
+                                    ],
+                                }}
+                                options={{
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    scales: {
+                                        x: {
+                                            ticks: { maxRotation: 35, minRotation: 35, font: { size: 10, family: 'Manrope' } },
+                                            grid: { display: false },
+                                        },
+                                        y: {
+                                            suggestedMin: 50,
+                                            suggestedMax: 180,
+                                            grid: { color: 'rgba(8, 76, 119, 0.08)' },
+                                            ticks: { stepSize: 20, font: { size: 10, family: 'Manrope' } },
+                                        },
+                                    },
+                                    elements: { point: { hoverRadius: 4 } },
+                                    plugins: {
+                                        legend: { position: 'right' as const, labels: { boxWidth: 10, boxHeight: 10 } },
+                                        tooltip: { enabled: true },
+                                    },
+                                }}
+                                height={300}
+                            />
+                        </div>
+                        <div className=' basis-1/2 p-[.5rem] my-[.4rem] grid grid-cols-2 gap-4'>
+                            <div>
+                                <div className='flex items-center space-x-2'>
+                                    <div className='bg-ben rounded-full w-[.6rem] h-[.6rem]'></div>
+                                    <div>Systolic</div>
+                                </div>
+                                <div className='text-[1.2rem] font-bold'>160</div>
+                                <p className='text-[.8rem] text-darkgrey'>Higher than Average</p>
                             </div>
-                            <code><strong>160</strong></code>
-                            <p>Higher than Average</p>
-                            <div className='flex items-center space-x-1'>
-                                <div className='bg-paleblue rounded-full w-[.7rem] h-[.7rem]'></div>
-                                <div>Diatolic</div>
+                            <div>
+                                <div className='flex items-center space-x-2'>
+                                    <div className='bg-paleblue rounded-full w-[.6rem] h-[.6rem]'></div>
+                                    <div>Diastolic</div>
+                                </div>
+                                <div className='text-[1.2rem] font-bold'>70</div>
+                                <p className='text-[.8rem] text-darkgrey'>Lower than Average</p>
                             </div>
-                            <code><strong>70</strong></code>
-                            <p>
-                                Lower than Average
-                            </p>
                         </div>
                     </div>
                     <div className='grid grid-cols-3 gap-[.8rem]'>
