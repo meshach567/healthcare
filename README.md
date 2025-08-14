@@ -1,132 +1,102 @@
-# Create a README.md file with the specified content
-readme_content = """
-# Healthcare Dashboard
+## Healthcare Dashboard
 
-This project is a healthcare dashboard built with Next.js, TypeScript, Tailwind CSS, and Rechart.js. It utilizes the Next.js App Router and custom hooks (`useFetch` and `useThirdIndexvalues`) for fetching and handling data from a local API integration.
+A responsive healthcare dashboard built with Next.js (App Router), TypeScript, Tailwind CSS, and Chart.js via `react-chartjs-2`. It fetches patient data from a secured API and visualizes diagnosis history alongside key patient details and lab results.
 
-## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Contributing](#contributing)
-- [License](#license)
+### Tech Stack
 
-## Installation
+- Next.js 14 (App Router)
+- React 18 + TypeScript
+- Tailwind CSS 3
+- Chart.js 4 + `react-chartjs-2`
 
-1. Clone the repository:
+### Getting Started
 
-\`\`\`sh
+1. Clone the repository
+
+```sh
 git clone https://github.com/meshach567/healthcare.git
-\`\`\`
+cd healthcare
+```
 
-2. Navigate to the project directory:
+2. Install dependencies
 
-\`\`\`sh
-cd healthcare-dashboard
-\`\`\`
-
-3. Install the dependencies:
-
-\`\`\`sh
+```sh
 npm install
-\`\`\`
+```
 
-## Usage
+3. Configure environment variables (see below)
 
-1. Start the development server:
+4. Run the development server
 
-\`\`\`sh
+```sh
 npm run dev
-\`\`\`
+```
 
-2. Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to view the dashboard.
+Open http://localhost:3000 in your browser.
 
-## Features
+### Environment Variables
 
-- **Next.js App Router**: Utilizes the new App Router for improved routing and data fetching capabilities.
-- **TypeScript**: Strongly typed language for building more robust and maintainable code.
-- **Tailwind CSS**: Utility-first CSS framework for rapid UI development.
-- **Rechart.js**: A charting library for visualizing healthcare data.
-- **Custom Hooks**: 
-  - `useFetch`: Custom hook for fetching data from the local API.
-  - `useThirdvalue`: Custom hook for handling specific logic in the application.
+The app fetches from a protected endpoint using Basic Auth. Create a `.env.local` in the project root:
 
-## Custom Hooks
+```env
+userName=your_username
+passWord=your_password
+```
 
-### useFetch
+These are referenced in `src/hooks/useFetch.ts`.
 
-This hook is used for fetching data from the local API.
+### Scripts
 
-\`\`\`typescript
-import { useState, useEffect } from 'react';
-
-const useFetch = (url: string) => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setLoading(false);
-      });
-  }, [url]);
-
-  return { data, loading, error };
-};
-
-export default useFetch;
-\`\`\`
-
-### useThirdIndexValues
-
-This hook handles specific application logic.
-
-\`\`\`typescript
-import { useMemo } from 'react';
-
-interface Data {
-  name_person?: string;
-  contact_info: string;
-  date_of_birth: string;
-  gender: string;
-  insurance_provider: string;
-  emergency_contact: string;
-  profile_picture: string;
+```json
+{
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint"
 }
+```
 
-const useThirdIndexValues = (data: Data[], fields: (keyof Data)[]) => {
-  return useMemo(() => {
-    if (data.length < 3) return [];
-    return fields.map(field => data[2][field]);
-  }, [data, fields]);
-};
+Common:
 
-export default useThirdvalue;
-\`\`\`
+- Dev: `npm run dev`
+- Build: `npm run build && npm run start`
+- Lint: `npm run lint`
 
-## API Integration
+### Features
 
-The project fetches data from a locally hosted API. Ensure your local API is running and accessible at the expected endpoints.
+- Grid-based dashboard layout (`.testimonial-grid`) with responsive breakpoints
+- Patient list (`src/components/profileName/Patient.tsx`)
+- Diagnosis history chart (`src/components/profilecard/ProfileCard.tsx`)
+- Diagnostic list (`src/components/profileList/list.tsx`)
+- Patient info panel (`src/components/profileHistory/history.tsx` + `historyChild.tsx`)
+- Lab results summary (`src/components/profileLab/lab.tsx`)
 
-## Contributing
+### Project Structure
 
-Contributions are welcome! Please open an issue or submit a pull request for any improvements or suggestions.
+```text
+src/
+  app/
+    layout.tsx          # Root layout
+    page.tsx            # Dashboard page
+    globals.css         # Global styles and grid
+  components/
+    header/navbar.tsx
+    profileName/Patient.tsx
+    profilecard/ProfileCard.tsx
+    profileHistory/{history.tsx,historyChild.tsx}
+    profileLab/lab.tsx
+    profileList/list.tsx
+  hooks/
+    useFetch.ts              # Fetch from API with Basic Auth
+    useThirdIndexValues.ts   # Extracts fields from 3rd item in array
+  utils/
+    intefaces.ts
+```
 
-## License
+### Notes
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-"""
+- `useFetch` requests `https://fedskillstest.coalitiontechnologies.workers.dev/` with Basic Auth from env vars.
+- The chart currently uses a static dataset to reflect the intended style.
+- Tailwind config includes custom palette and typography in `tailwind.config.js`.
 
-# Write the README.md file to the filesystem
-file_path = "/mnt/data/README.md"
-with open(file_path, "w") as file:
-    file.write(readme_content)
 
-file_path
