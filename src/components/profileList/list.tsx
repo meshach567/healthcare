@@ -32,7 +32,7 @@ const List = () => {
     return (
         <section className="testimonial bg-white shadow-md ">
             <div className='flex flex-col p-[.89rem] space-y-8'>
-                <h2>Diagonostic List</h2>
+                <h2>Diagnostic List</h2>
 
                 <div className='flex flex-col gap-[1rem] space-y-8'>
                     <div className='flex flex-row gap-[1rem] bg-faintgrey rounded-full px-[1rem] py-[.8rem]'>
